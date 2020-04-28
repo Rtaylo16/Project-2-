@@ -37,3 +37,5 @@ function test(){
   $(".navbar-toggler").click(function(){
     setTimeout(function(){ test(); });
   });
+
+  
