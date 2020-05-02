@@ -7,9 +7,10 @@ if (process.env.JAWSDB_URL) {
         host: 'localhost',
         port: 3306,
         user: 'root',
-        password: 'Rtaylo16',
+        password: 'Naoto-kun211',
         database: 'spot_db'
     });
 };
 connection.connect();
 module.exports = connection;
+
