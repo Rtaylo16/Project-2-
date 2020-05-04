@@ -1,5 +1,8 @@
+// $(document).ready(function() {
 var express = require('express');
-// var app = express();
+var exphbs = require("express-handlebars");
+// var $ = require('jquery');
+var app = express();
 // var connection = require('./config/connection');
 
 
@@ -20,6 +23,9 @@ var express = require('express');
 
 // });
 
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
 
 
 
@@ -29,18 +35,23 @@ var spotify = new Spotify({
   id: 'fee7a3c135dc44e69557d6eb151a4ef5',
   secret: 'b8a00147732d4495864e25cba6b5ff66'
 });
- 
-spotify
+ app.get('/playlist', function(req,res){
+  spotify
   .request('https://api.spotify.com/v1/playlists/6DPMOhfZP3RcpNEH0zpA9B')
   .then(function(data) {
-    console.dir(data); 
+    console.dir(data);
+    res.render("playlist",{playlist:data});
+    
   })
   .catch(function(err) {
     console.error('Error occurred: ' + err); 
   });
+ })
 
 
-// console.log('Listening on 8888');
-// app.listen(8888);
+
+console.log('Listening on 8888');
+app.listen(8888);
 
 
+// });
