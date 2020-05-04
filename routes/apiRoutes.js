@@ -28,6 +28,27 @@ app.get('/scis', function(req, res){
     })
 });
 
+//adding track name and artist to MySQL table
+app.get('/name', function(req, res){
+    spotify
+    .request('https://api.spotify.com/v1/playlists/6DPMOhfZP3RcpNEH0zpA9B')
+    .then(function(data) {
+      for (let i = 0; i < data.tracks.items.length; i++) {
+        var track = data.tracks.items[i].track.name;
+        
+    };
+      for (let i = 0; i < data.tracks.items.length; i++) {
+        var artist = data.tracks.items[i].track.artists[0].name;
+        
+      };
+        
+        var query = "INSERT INTO track SET ?"
+      connection.query(query,{name: track, artist: artist}, function(result){
+       
+      })
+    })
+});
+
 //getting the users playlist
 app.get('/j', function(req, res){
     

@@ -1,1 +1,0 @@
-insert into playlists (id, playlistID) values (1, "6DPMOhfZP3RcpNEH0zpA9B");

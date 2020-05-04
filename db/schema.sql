@@ -18,4 +18,5 @@ primary key (id)
 );
 
 SELECT * FROM playlists;
+SELECT * FROM track;
 
