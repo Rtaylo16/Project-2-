@@ -32,8 +32,24 @@ var spotify = new Spotify({
 
 // });
 
+
+
+
+app.use(express.static("public"));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+
+
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
+
+
+var routes = require("./controllers/tracksPlaylistController.js");
+app.use(routes);
+
+
+
 
 
 app.get('/scis', function(req, res){
