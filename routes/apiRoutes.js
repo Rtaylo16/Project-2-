@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var connection = require('./config/connection');
+var connection = require('../config/connection');
 
 
 
@@ -12,38 +12,23 @@ var spotify = new Spotify({
   secret: 'b8a00147732d4495864e25cba6b5ff66'
 });
  
-// var request = require("request");
-// var user_id = "justin";
-// var playlist_url = "https://api.spotify.com/v1/users/" + user_id + "/playlists";
-
-// request({url:playlist_url, header})
 
 
-// app.get('/playlists/:playlist_id', function(req, res) {
-//    connection.query("SELECT * FROM playlists WHERE playlistID = ?", req.params.playlist_id, function(err, result){
-//     if (err) throw err;
-    
-//      res.send(result);
-//    })
- 
-
-// });
-
-
+//adding playlist ID to MySQL table
 app.get('/scis', function(req, res){
     
     spotify
     .request('https://api.spotify.com/v1/playlists/6DPMOhfZP3RcpNEH0zpA9B')
     .then(function(data) {
-      connection.query
+        var newdata = data.id;
+        var query = "INSERT INTO playlists SET ?"
+      connection.query(query, {playlistID: newdata}, function(result){
+         res.end;
+      })
     })
-    .catch(function(err) {
-      console.error('Error occurred: ' + err); 
-    }); 
-
 });
 
-
+//getting the users playlist
 app.get('/j', function(req, res){
     
         spotify
@@ -57,6 +42,7 @@ app.get('/j', function(req, res){
     
 });
 
+//creating a playlist
 app.get('/ko', function(req, res){
     spotify
     .request('https://api.spotify.com/v1/users/12126451980/playlists')
@@ -68,18 +54,5 @@ app.get('/ko', function(req, res){
     }); 
 })
 
-
-// spotify
-//   .request('.get')
-//   .then(function(data) {
-//     console.dir(data); 
-//   })
-//   .catch(function(err) {
-//     console.error('Error occurred: ' + err); 
-//   });
-
-
 console.log('Listening on 8888');
 app.listen(8888);
-
-
