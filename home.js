@@ -17,22 +17,37 @@ app.set("view engine", "handlebars");
 
 
 
- app.get('/playlist', function(req,res){
+//  app.get('/playlist', function(req,res){
+//   spotify
+//   .request('https://api.spotify.com/v1/playlists/6DPMOhfZP3RcpNEH0zpA9B')
+//   .then(function(data) {
+//     console.dir(data);
+//     res.render("playlist",{playlist:data});
+    
+//   })
+//   .catch(function(err) {
+//     console.error('Error occurred: ' + err); 
+//   });
+//  });
+
+
+ app.get('/playlist', function (req, res){
   spotify
   .request('https://api.spotify.com/v1/playlists/6DPMOhfZP3RcpNEH0zpA9B')
-  .then(function(data) {
-    console.dir(data);
-    res.render("playlist",{playlist:data});
-    
-  })
-  .catch(function(err) {
-    console.error('Error occurred: ' + err); 
+  .then(function (data) {
+      for (let i = 0; i < data.tracks.items.length; i++) {
+          var track = data.tracks.items[i].track.name;
+        console.log(track)
+      };
+      
+      for (let i = 0; i < data.tracks.items.length; i++) {
+          var artist = data.tracks.items[i].track.artists[0].name;
+
+      };
+  
+      res.render('playlist', {track: [track], track: [artist]});
+ 
   });
- });
-
-
- app.get('/playlist/names', function (req, res){
-   res.render
  })
 
 
