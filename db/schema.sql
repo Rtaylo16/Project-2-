@@ -3,10 +3,10 @@ DROP DATABASE IF EXISTS spot_db;
 CREATE DATABASE spot_db;
 USE spot_db;
 
-CREATE TABLE login (
+CREATE TABLE track (
     id INT auto_increment,
-    username varchar(30),
-    password varchar(30),
+    name varchar(30),
+    artist varchar(30),
     primary key (id)
 );
 
@@ -17,5 +17,5 @@ playlistID varchar(30),
 primary key (id)
 );
 
-
+SELECT * FROM playlists;
 
