@@ -13,7 +13,5 @@ CREATE TABLE login (
 create table playlists (
 id int auto_increment,
 playlistID varchar(30),
-
 primary key (id)
 );
-
