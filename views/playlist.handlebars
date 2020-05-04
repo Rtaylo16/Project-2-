@@ -1,0 +1,25 @@
+
+
+<table class="table table-hover table-fixed" id="playlist">
+
+  <!--Table head-->
+  <thead>
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Artist</th>
+      <th>Album</th>
+      <th>Add Track</th>
+      <th>Delete Track</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {{#each data}}
+    <tr>
+        <td>{{this.name}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+
+</table>

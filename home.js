@@ -1,6 +1,9 @@
+// $(document).ready(function() {
 var express = require('express');
+var exphbs = require("express-handlebars");
+// var $ = require('jquery');
 var app = express();
-var connection = require('./config/connection');
+// var connection = require('./config/connection');
 
 
 
@@ -29,6 +32,9 @@ var spotify = new Spotify({
 
 // });
 
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
 
 app.get('/scis', function(req, res){
     
@@ -56,30 +62,23 @@ app.get('/j', function(req, res){
         }); 
     
 });
+ app.get('/playlist', function(req,res){
+  spotify
+  .request('https://api.spotify.com/v1/playlists/6DPMOhfZP3RcpNEH0zpA9B')
+  .then(function(data) {
+    console.dir(data);
+    res.render("playlist",{playlist:data});
+    
+  })
+  .catch(function(err) {
+    console.error('Error occurred: ' + err); 
+  });
+ })
 
-app.get('/ko', function(req, res){
-    spotify
-    .request('https://api.spotify.com/v1/users/12126451980/playlists')
-    .then(function(data) {
-      res.json(data); 
-    })
-    .catch(function(err) {
-      console.error('Error occurred: ' + err); 
-    }); 
-})
-
-
-// spotify
-//   .request('.get')
-//   .then(function(data) {
-//     console.dir(data); 
-//   })
-//   .catch(function(err) {
-//     console.error('Error occurred: ' + err); 
-//   });
 
 
 console.log('Listening on 8888');
 app.listen(8888);
 
 
+// });
