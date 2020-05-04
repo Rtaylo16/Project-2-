@@ -20,9 +20,10 @@ app.get('/scis', function(req, res){
     spotify
     .request('https://api.spotify.com/v1/playlists/6DPMOhfZP3RcpNEH0zpA9B')
     .then(function(data) {
-        var query = "INSERT INTO playlists (playlistID) VALUES ?"
-      connection.query(query, data.id, function(result){
-        res.end();
+        var newdata = data.id;
+        var query = "INSERT INTO playlists SET ?"
+      connection.query(query, {playlistID: newdata}, function(result){
+         res.end;
       })
     })
 });

@@ -12,7 +12,7 @@ CREATE TABLE track (
 
 create table playlists (
 id int auto_increment,
-playlistID varchar(30),
+playlistID varchar(30) NOT NULL,
 
 primary key (id)
 );
