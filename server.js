@@ -15,29 +15,18 @@ var spotify = new Spotify({
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+require("./routes/api-routes.js")(app);
+require("./routes/html-routes.js")(app);
 
 
-//  app.get('/playlist', function(req,res){
-//   spotify
-//   .request('https://api.spotify.com/v1/playlists/6DPMOhfZP3RcpNEH0zpA9B')
-//   .then(function(data) {
-//     console.dir(data);
-//     res.render("playlist",{playlist:data});
-    
-//   })
-//   .catch(function(err) {
-//     console.error('Error occurred: ' + err); 
-//   });
-//  });
 
-
- app.get('/playlist', function (req, res){
+ app.get('/', function (req, res){
   spotify
   .request('https://api.spotify.com/v1/playlists/6DPMOhfZP3RcpNEH0zpA9B')
   .then(function (data) {
       for (let i = 0; i < data.tracks.items.length; i++) {
           var track = data.tracks.items[i].track.name;
-        console.log(track)
+        // console.log(track)
       };
       
       for (let i = 0; i < data.tracks.items.length; i++) {
@@ -45,7 +34,7 @@ app.set("view engine", "handlebars");
 
       };
   
-      res.render('playlist', {track: [track], track: [artist]});
+      res.render('playlist', {track: [track]});
  
   });
  })

@@ -7,6 +7,7 @@ CREATE TABLE track (
     id INT auto_increment,
     name varchar(30),
     artist varchar(30),
+    album varchar(30),
     primary key (id)
 );
 
@@ -17,6 +18,7 @@ playlistID varchar(30) NOT NULL,
 primary key (id)
 );
 
-SELECT * FROM playlists;
 SELECT * FROM track;
+
+
 

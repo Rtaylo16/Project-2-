@@ -2,9 +2,6 @@ var express = require('express');
 var app = express();
 var connection = require('../config/connection');
 
-
-
-
 var Spotify = require('node-spotify-api');
  
 var spotify = new Spotify({
@@ -28,24 +25,19 @@ app.get('/scis', function(req, res){
     })
 });
 
-//adding track name and artist to MySQL table
+//adding track name, artist and album to MySQL table
 app.get('/name', function(req, res){
     spotify
     .request('https://api.spotify.com/v1/playlists/6DPMOhfZP3RcpNEH0zpA9B')
     .then(function(data) {
       for (let i = 0; i < data.tracks.items.length; i++) {
         var track = data.tracks.items[i].track.name;
-        
-    };
-      for (let i = 0; i < data.tracks.items.length; i++) {
         var artist = data.tracks.items[i].track.artists[0].name;
-        
-      };
-        
+        var album = data.tracks.items[i].track.album.name;
         var query = "INSERT INTO track SET ?"
-      connection.query(query,{name: track, artist: artist}, function(result){
-       
-      })
+        connection.query(query,{name: track, artist: artist, album: album}, function(result){})
+    };
+      
     })
 });
 
@@ -74,6 +66,29 @@ app.get('/ko', function(req, res){
       console.error('Error occurred: ' + err); 
     }); 
 })
+
+//search query
+app.get('/se', function(req, res){
+  spotify.search({ type: 'track', query: 'All the Small Things', limit: 15 }, function(err, data) {
+    if (err) {
+      return console.log('Error occurred: ' + err);
+    }
+  
+   })
+   .then(function(data){
+     for (let index = 0; index < array.length; index++) {
+      var query = "INSERT INTO track SET ?"
+        connection.query(query,{name: track, artist: artist, album: album}, function(result){})
+       
+     }
+  });
+})
+ 
+
+
+
+
+
 
 console.log('Listening on 8888');
 app.listen(8888);
