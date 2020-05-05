@@ -1,5 +1,7 @@
 var mysql = require("mysql");
 var connection;
+
+
 if (process.env.JAWSDB_URL) {
     connection = mysql.createConnection(process.env.JAWSDB_URL);
 } else {
@@ -7,7 +9,7 @@ if (process.env.JAWSDB_URL) {
         host: 'localhost',
         port: 3306,
         user: 'root',
-        password: 'Rtaylo16',
+        password: 'Fairview13097',
         database: 'spot_db'
     });
 };
