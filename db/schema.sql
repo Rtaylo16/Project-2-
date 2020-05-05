@@ -11,14 +11,22 @@ CREATE TABLE track (
     primary key (id)
 );
 
+create table search (
+ id INT auto_increment,
+    searchName varchar(30),
+    searchArtist varchar(30),
+    searchAlbum varchar(30),
+    primary key (id)
+);
+
 create table playlists (
 id int auto_increment,
 playlistID varchar(30) NOT NULL,
-
 primary key (id)
 );
 
 SELECT * FROM track;
+SELECT * FROM search;
 
 
 
