@@ -1,7 +1,7 @@
 DROP DATABASE IF EXISTS spot_db;
 
 CREATE DATABASE spot_db;
-USE spot_db;
+
 
 CREATE TABLE track (
     id INT auto_increment,
@@ -24,9 +24,10 @@ id int auto_increment,
 playlistID varchar(30) NOT NULL,
 primary key (id)
 );
-
+USE spot_db;
 SELECT * FROM track;
 SELECT * FROM search;
+SELECT * FROM playlists;
 
 
 

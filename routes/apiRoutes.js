@@ -1,7 +1,9 @@
 var express = require('express');
 var app = express();
 var connection = require('../config/connection');
+var db = require('../models');
 
+module.exports = function(app){
 var Spotify = require('node-spotify-api');
 
 var spotify = new Spotify({
@@ -17,11 +19,16 @@ app.get('/scis', function (req, res) {
   spotify
     .request('https://api.spotify.com/v1/playlists/6DPMOhfZP3RcpNEH0zpA9B')
     .then(function (data) {
+
       var newdata = data.id;
-      var query = "INSERT INTO playlists SET ?"
-      connection.query(query, { playlistID: newdata }, function (result) {
-        res.end;
+      db.Playlist.create({ playlistID: newdata})
+      .then(function(result){
+        res.json({success: true});
       })
+      // var query = "INSERT INTO playlists SET ?"
+      // connection.query(query, { playlistID: newdata }, function (result) {
+      //   res.end;
+      // })
     })
 });
 
@@ -34,10 +41,11 @@ app.get('/name', function (req, res) {
         var track = data.tracks.items[i].track.name;
         var artist = data.tracks.items[i].track.artists[0].name;
         var album = data.tracks.items[i].track.album.name;
-        var query = "INSERT INTO track SET ?"
-        connection.query(query, { name: track, artist: artist, album: album }, function (result) { })
+        db.Track.create({name: track, artist: artist, album: album });
+        // var query = "INSERT INTO Tracks SET ?"
+        // connection.query(query, { name: track, artist: artist, album: album }, function (result) { })
       };
-
+res.json({success: true});
     })
 });
 
@@ -86,10 +94,4 @@ app.get('/se', function (req, res) {
 
 
 
-
-
-
-
-
-  console.log('Listening on 8888');
-  app.listen(8888);
+}

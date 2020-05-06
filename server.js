@@ -2,6 +2,10 @@
 var express = require('express');
 var exphbs = require("express-handlebars");
 var app = express();
+var db = require('./models');
+var PORT = 8888;
+const Handlebars = require('handlebars')
+const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
 // var connection = require('./config/connection');
 
 var Spotify = require('node-spotify-api');
@@ -12,11 +16,11 @@ var spotify = new Spotify({
 });
  
 
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.engine("handlebars", exphbs({ defaultLayout: "main",   handlebars: allowInsecurePrototypeAccess(Handlebars) }));
 app.set("view engine", "handlebars");
 
-require("./routes/api-routes.js")(app);
-require("./routes/html-routes.js")(app);
+require("./routes/apiRoutes")(app);
+require("./routes/htmlRoutes")(app);
 
 
 
@@ -40,6 +44,8 @@ require("./routes/html-routes.js")(app);
  })
 
 
-
-console.log('Listening on 8888');
-app.listen(8888);
+db.sequelize.sync({ force: true }).then(function() {
+  app.listen(PORT, function() {
+    console.log("App listening on PORT " + PORT);
+  });
+});
