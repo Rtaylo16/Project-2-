@@ -6,15 +6,13 @@ $(document).ready(function () {
 
     playlistForm.on("click", function (event) {
         event.preventDefault();
-
+        console.log("Click");
         listMake();
 
     });
     function listMake() {
-        window.location.href("/table")
-            .catch(function (err) {
-                console.log(err);
-            });
+        window.location.href = "/table";
+                    console.log("click2");
     };
 
 });

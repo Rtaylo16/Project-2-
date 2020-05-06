@@ -16,8 +16,10 @@ var spotify = new Spotify({
 });
  
 
+app.use(express.static("public"));
 app.engine("handlebars", exphbs({ defaultLayout: "main",   handlebars: allowInsecurePrototypeAccess(Handlebars) }));
 app.set("view engine", "handlebars");
+
 
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
