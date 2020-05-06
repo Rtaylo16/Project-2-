@@ -5,7 +5,7 @@
   <!--Table head-->
   <thead>
     <tr>
-      <th></th>
+      
       <th>Title</th>
       <th>Artist</th>
       <th>Album</th>
@@ -15,11 +15,18 @@
   </thead>
 
   <tbody>
-    {{#each data}}
+    {{#each track}}
     <tr>
-        <td>{{this.name}}</td>
+        <td>{{name}}</td>
+        <td>{{artist}}</td>
+        <td>{{album}}</td>
     </tr>
     {{/each}}
   </tbody>
 
+    
+
 </table>
+
+
+

@@ -1,4 +1,19 @@
 body {
     background: url("../assets/back.jpg") no-repeat, center;
-    background-size: 1540px 850px;
+    background-size: cover;
+}
+
+#card{
+    background-color: lightblue;
+}
+
+.card-image{
+    background-color: lightblue;
+}
+
+h2{
+    font-family: 'Molle', cursive;
+    text-align: center;
+    color: white;
+    text-shadow: black;
 }
