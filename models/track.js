@@ -13,16 +13,6 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false
         }
     });
-
-    Track.associate = function(models) {
-        Track.hasMany(models.song, {
-            onDelete: "CASCADE"
-        });
-
-        Track.belongsTo(models.user, {
-            foreignKey: "Owner"
-        });
-    };
     
     return Track;
 };
