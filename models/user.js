@@ -8,15 +8,6 @@ module.exports = function(sequelize, DataTypes) {
         password: DataTypes.STRING
         
     });
-    // User.associate = function(models) {
-    //     User.hasMany(models.queue, {
-    //         onDelete: "CASCADE"
-    //     });
-
-    //     User.belongsToMany(models.queue, {
-    //         onDelete: "CASCADE"
-    //     });
-    // };
-
-    return User;
+  
+  return User;
 };

@@ -24,7 +24,7 @@ require("./routes/htmlRoutes")(app);
 
 
 
- app.get('/', function (req, res){
+ app.get('/table', function (req, res){
   spotify
   .request('https://api.spotify.com/v1/playlists/6DPMOhfZP3RcpNEH0zpA9B')
   .then(function (data) {
@@ -41,7 +41,13 @@ require("./routes/htmlRoutes")(app);
       res.render('playlist', {track: [track]});
  
   });
- })
+ });
+
+ app.get('/', function (req, res){
+   res.render('create');
+ });
+
+ 
 
 
 db.sequelize.sync({ force: true }).then(function() {

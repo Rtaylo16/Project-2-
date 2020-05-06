@@ -1,4 +1,6 @@
 $(document).ready(function() {
-$(document)
+$(".search").on("click", function(){
+    location.href 
+})
 
 });
