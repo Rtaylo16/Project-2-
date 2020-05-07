@@ -4,10 +4,11 @@ var db = require('../models');
 
 module.exports = function(app) {
 
-    app.get("/", function(req, res) {
+    app.get("/table", function(req, res) {
     db.Track.findAll({})
     .then(function(results){
       console.log(results);
+      
       res.render('playlist', {track: results})})
     });
 
@@ -19,6 +20,8 @@ module.exports = function(app) {
       });
   
   
-  
+    app.get("/", function(req, res) {
+      res.render('create')
+    });
   };
 

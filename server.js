@@ -3,7 +3,7 @@ var express = require('express');
 var exphbs = require("express-handlebars");
 var app = express();
 var db = require('./models');
-var PORT = 8888;
+var PORT = process.env.PORT || 8888;
 const Handlebars = require('handlebars')
 const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
 // var connection = require('./config/connection');
@@ -16,15 +16,17 @@ var spotify = new Spotify({
 });
  
 
+app.use(express.static("public"));
 app.engine("handlebars", exphbs({ defaultLayout: "main",   handlebars: allowInsecurePrototypeAccess(Handlebars) }));
 app.set("view engine", "handlebars");
+
 
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
 
 
- app.get('/', function (req, res){
+ app.get('/table', function (req, res){
   spotify
   .request('https://api.spotify.com/v1/playlists/6DPMOhfZP3RcpNEH0zpA9B')
   .then(function (data) {
@@ -41,7 +43,13 @@ require("./routes/htmlRoutes")(app);
       res.render('playlist', {track: [track]});
  
   });
- })
+ });
+
+ app.get('/', function (req, res){
+   res.render('create');
+ });
+
+ 
 
 
 db.sequelize.sync({ force: true }).then(function() {
