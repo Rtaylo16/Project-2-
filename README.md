@@ -19,9 +19,9 @@ The object was to create a space where users can come to listen to pre generated
 
 ## Usage
 
-The user is to sign in to their Soundcloud account, and the application stores the user ID. The user is prompted to name their playlist, with an optional description, and whether or not they want the playlist to be private or note. Using this information, a blank playlist is generated. The user can search for songs by title, and click buttons to add to their existing playlist. The aformentioned parameters are stored in MySQL database. The pages are generated through Handlebars
+The user is to sign in to their Soundcloud account, and the application stores the user ID. The user is prompted to name their playlist, with an optional description, and whether or not they want the playlist to be private or note. Using this information, a blank playlist is generated. The user can search for songs by title, and click buttons to add to their existing playlist. The aformentioned parameters are stored in MySQL database. The pages are generated through Handlebars.
 
 ## Screenshots
 
-![GitHub Logo](assets/landing.png)
+![GitHub Logo](assets/landingpage.png)
 ![GitHub Logo](assets/List.png)
