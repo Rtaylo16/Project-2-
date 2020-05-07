@@ -23,5 +23,5 @@ The user is to sign in to their Soundcloud account, and the application stores t
 
 ## Screenshots
 
-![GitHub Logo](assets/landing.png)
+![GitHub Logo](assets/send.png)
 ![GitHub Logo](assets/List.png)
