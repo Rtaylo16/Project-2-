@@ -1,12 +1,10 @@
-
     <div class="card">
         <div class="card-body">
-          <h3>Paste your Playlist ID into the input and press submit.</h3>
             <!-- Start: Pretty Search Form -->
             <form class="search-form">
                 <div class="input-group">
                     <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-search"></i></span></div><input class="form-control" type="text" placeholder="I am looking for..">
-                    <div class="input-group-append"><button class="btn btn-light" type="button">Submit </button></div>
+                    <div class="input-group-append"><button class="btn btn-light" type="button">Search </button></div>
                 </div>
             </form>
             <!-- End: Pretty Search Form -->
@@ -17,18 +15,16 @@
                             <th>Track</th>
                             <th>Artist</th>
                             <th>Album</th>
-                            
+                            <th>Add Track</th>
                         </tr>
                     </thead>
                     <tbody>
-                          {{#each track}}
-                          <tr>
-                              <td>{{name}}</td>
-                              <td>{{artist}}</td>
-                              <td>{{album}}</td>
-                              
-                          </tr>
-                          {{/each}}
+                        {{#each search}}
+                                <td>{{searchName}}</td>
+                              <td>{{searchArtist}}</td>
+                              <td>{{searchAlbum}}</td>
+                              <td><button class="btn btn-primary pull-center" type="button"><i class="fa fa-star"></i>Add</button></td>
+                        {{/each}}
                     </tbody>
                 </table>
             </div>
