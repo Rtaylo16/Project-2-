@@ -10,6 +10,14 @@ module.exports = function(app) {
       console.log(results);
       res.render('playlist', {track: results})})
     });
+
+    app.get('/search',function(req, res) {
+      db.Search.findAll({})
+      .then(function(results){
+        console.log(results);
+        res.render('search', {track: results})})
+      });
+  
   
   
   };

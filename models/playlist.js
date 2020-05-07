@@ -6,19 +6,6 @@ module.exports = function (sequelize, DataTypes) {
         },
 
     });
-    // Playlist.associate = function(models) {
-    //     Playlist.hasMany(models.song, {
-    //         onDelete: "CASCADE"
-    //     });
-
-    //     Playlist.belongsToMany(models.user, {
-    //         onDelete: "CASCADE"
-    //     });
-
-    //     Playlist.belongsTo(models.user, {
-    //         foreignKey: "owner"
-    //     });
-    // };
 
     return Playlist;
 };
